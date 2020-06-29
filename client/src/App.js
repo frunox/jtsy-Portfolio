@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useMemo } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React, { useState, useEffect, useMemo, Component } from "react";
+import { BrowserRouter as Router, Route, Redirect, Link, Switch } from "react-router-dom";
 import Developer from "./pages/Developer";
 import NoMatch from "./pages/NoMatch";
 import About from "./pages/About";
@@ -7,14 +7,70 @@ import Home from "./pages/Home";
 import Contact from "./pages/Contact";
 import Signin from "./pages/Signin/Signin";
 import Settings from "./pages/Settings/Settings";
+// import Login from "./pages/Login";
 import API from "./utils/API";
 import DevDataContext from "./contexts/DevDataContext";
 import SetupContext from "./contexts/SetupContext";
 
-// Here is another way to set up imports.  I only did this on the about page to show how. Check out how the About pages exports.  You will need the curly brackets when importing.
-// import { Layout } from "./components/Layout";
+// create 'authentication' service
+const fakeAuth = {
+  isAuthenticated: false,
+  authenticate(cb) {
+    this.isAuthenticated = true
+    setTimeout(cb, 100) // mimics call to authentication service
+    console.log('in authenticate isAuthenticated: ', this.isAuthenticated)
+  },
+  signout(cb) {
+    this.isAuthenticated = false
+    setTimeout(cb, 100)
+  }
+}
 
-//
+console.log('isAuthenticated: ', fakeAuth.isAuthenticated)
+
+
+// create login component
+class Login extends React.Component {
+  state = {
+    redirectToReferrer: false
+  }
+  login = () => {
+    console.log('in App login')
+    fakeAuth.authenticate(() => {
+      this.setState(() => ({
+        redirectToReferrer: true
+      }))
+    })
+    console.log('isAuthenticated: ', fakeAuth.isAuthenticated)
+  }
+  render() {
+    const { redirectToReferrer } = this.state
+    if (redirectToReferrer) {
+      return (
+        <Redirect to="/" />
+      )
+    }
+    return (
+      <div>
+        <p>You must log in to view this page</p>
+        <button onClick={this.login}>Log In</button>
+      </div>
+    )
+  }
+}
+
+// create new component for the private route. It takes in a path and component
+// const PrivateRoute = ({ component: Component, ...rest }) => {
+//   console.log('PrivateRoute isAuthenticated: ', fakeAuth.isAuthenticated)
+//   return (
+//     <Route {...rest} render={(props) => (
+//       fakeAuth.isAuthenticated === true ? <Component {...props} />
+//         : <Redirect to='/login' />
+//     )} />
+//   )
+// }
+
+
 // devData - This is in the format of how we are reading the database.
 // state is set after call to db for active developer info and repos to display
 const App = () => {
@@ -86,8 +142,9 @@ const App = () => {
                     )}
                   <Route exact path="/contact" component={Contact} />
                   <Route exact path="/about" component={About} />
-                  <Route exact path="/Developer" component={Developer} />
-                  <Route exact path="/Signin" component={Signin} />
+                  <Route exact path="/login" component={Login} fakeAuth={fakeAuth} />
+                  <Route path="/developer" component={Developer} />
+                  <Route exact path="/signin" component={Signin} />
                   <Route exact path="/settings" component={Settings} />
                 </SetupContext.Provider>
               </DevDataContext.Provider>
