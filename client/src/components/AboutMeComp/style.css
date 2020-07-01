@@ -6,10 +6,18 @@
   height: 100%;
   width: 100%;
   background-color: teal;
+  color: rgb(226, 215, 215);
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.title {
+  color: rgb(226, 215, 215);
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 .aboutContainer {
-  color: white;
   position: relative;
   top: 55px;
   padding-bottom: 35px;
@@ -26,8 +34,4 @@ a {
 
 a:hover {
   color: black;
-}
-
-h3 {
-  color: rgb(20, 34, 34);
 }
