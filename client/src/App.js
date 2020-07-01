@@ -13,63 +13,8 @@ import DevDataContext from "./contexts/DevDataContext";
 import SetupContext from "./contexts/SetupContext";
 
 // create 'authentication' service
-const fakeAuth = {
-  isAuthenticated: false,
-  authenticate(cb) {
-    this.isAuthenticated = true
-    setTimeout(cb, 100) // mimics call to authentication service
-    console.log('in authenticate isAuthenticated: ', this.isAuthenticated)
-  },
-  signout(cb) {
-    this.isAuthenticated = false
-    setTimeout(cb, 100)
-  }
-}
-
-console.log('isAuthenticated: ', fakeAuth.isAuthenticated)
-
 
 // create login component
-class Login extends React.Component {
-  state = {
-    redirectToReferrer: false
-  }
-  login = () => {
-    console.log('in App login')
-    fakeAuth.authenticate(() => {
-      this.setState(() => ({
-        redirectToReferrer: true
-      }))
-    })
-    console.log('isAuthenticated: ', fakeAuth.isAuthenticated)
-  }
-  render() {
-    const { redirectToReferrer } = this.state
-    if (redirectToReferrer) {
-      return (
-        <Redirect to="/" />
-      )
-    }
-    return (
-      <div>
-        <p>You must log in to view this page</p>
-        <button onClick={this.login}>Log In</button>
-      </div>
-    )
-  }
-}
-
-// create new component for the private route. It takes in a path and component
-// const PrivateRoute = ({ component: Component, ...rest }) => {
-//   console.log('PrivateRoute isAuthenticated: ', fakeAuth.isAuthenticated)
-//   return (
-//     <Route {...rest} render={(props) => (
-//       fakeAuth.isAuthenticated === true ? <Component {...props} />
-//         : <Redirect to='/login' />
-//     )} />
-//   )
-// }
-
 
 // devData - This is in the format of how we are reading the database.
 // state is set after call to db for active developer info and repos to display
@@ -142,7 +87,6 @@ const App = () => {
                     )}
                   <Route exact path="/contact" component={Contact} />
                   <Route exact path="/about" component={About} />
-                  <Route exact path="/login" component={Login} fakeAuth={fakeAuth} />
                   <Route path="/developer" component={Developer} />
                   <Route exact path="/signin" component={Signin} />
                   <Route exact path="/settings" component={Settings} />
