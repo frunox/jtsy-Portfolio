@@ -32,7 +32,9 @@ const CreateAccountComp = (props) => {
     console.log("HMMMM leaving CreateAccountcomp");
     props.handleInputChange();
     console.log('CreateAccountcomp call getsync()', state.githubID);
-    localStorage.setItem('password', state.password);
+    localStorage.setItem('jtsy-password', state.password);
+    localStorage.setItem('jtsy-signin', "true");
+    localStorage.setItem('jtsy-login', "false");
     // {developerLoginName: "frunox"}, {$set: {lname: "Black", fname: "Bob"}}
     // let obj1 = { developerLoginName: state.githubID, fname: state.firstName, lname: state.lastName, email: state.email }
     // console.log('to db: ', obj1)

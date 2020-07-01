@@ -25,9 +25,9 @@ function SignIn() {
     setSetup({ ...setup, isLoaded: true });
   };
 
+  console.log(localStorage.getItem("jtsy-signin"))
 
-
-  if (setup.loggedIn) {
+  if (localStorage.getItem("jtsy-signin") === "true") {
     console.log('in Signin.js, redirect to Home page')
     return (
       <div>

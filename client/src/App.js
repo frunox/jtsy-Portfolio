@@ -6,6 +6,7 @@ import About from "./pages/About";
 import Home from "./pages/Home";
 import Contact from "./pages/Contact";
 import Login from "./pages/Login";
+import Logout from "./pages/Logout";
 import Signin from "./pages/Signin/Signin";
 import Settings from "./pages/Settings/Settings";
 import API from "./utils/API";
@@ -97,11 +98,9 @@ const App = () => {
                     )}
                   <Route exact path="/contact" component={Contact} />
                   <Route exact path="/about" component={About} />
-                  {setup.loggedIn ? (
-                    <Route exact path="/developer" component={Developer} />
-                  ) : (
-                      <Route exact path="/login" component={Login} />
-                    )}
+                  <Route exact path="/developer" component={Developer} />
+                  <Route exact path="/login" component={Login} />
+                  <Route exact path="/logout" component={Logout} />
                   <Route exact path="/Signin" component={Signin} />
                   <Route exact path="/settings" component={Settings} />
                 </SetupContext.Provider>

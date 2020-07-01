@@ -15,7 +15,7 @@ export const Jumbotron = (props) => {
         <br />
         <br />
         <h2>
-          A web developer. Design, management and planning experience.  Bringing project to life!
+          A web developer. Design, management and planning experience.  Bringing projects to life!
         </h2>
       </Container>
     </Segment>

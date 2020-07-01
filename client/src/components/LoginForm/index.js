@@ -1,21 +1,19 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { Redirect } from 'react-router'
-import DevDataContext from "../../contexts/DevDataContext"
-import SetupContext from "../../contexts/SetupContext"
 
 console.log('in LoginForm')
 
 // handleInputChange is a prop from page Signin.js
 const LoginForm = (props) => {
-    const { devData } = useContext(DevDataContext);
-    const { setup } = useContext(SetupContext);
+    // const { devData } = useContext(DevDataContext);
+    // const { setup } = useContext(SetupContext);
     const [state, setState] = useState({
         githubID: "",
         password: "",
-        loggedIn: setup.loggedIn,
+        loggedIn: false
     });
 
-    console.log('in LoginForm, loggedIn: ', setup.loggedIn, state.loggedIn)
+    console.log('in LoginForm, LSlogin: ', localStorage.getItem("jtsy-login"))
     // handleInputChange is a prop from page Signin.js
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -23,10 +21,11 @@ const LoginForm = (props) => {
         // props.handleInputChange();
         console.log('Login handleSubmit', state.password, state.loggedIn);
 
-        if (state.password === localStorage.getItem('password')) {
+        if (state.password === localStorage.getItem('jtsy-password')) {
+            localStorage.setItem("jtsy-login", "true");
             setState({
                 ...state,
-                loggedIn: true,
+                loggedIn: true
             })
         } else {
             alert('Re-enter password')
@@ -76,11 +75,11 @@ const LoginForm = (props) => {
                         />
                     </div>
                     <div className="createAccount">
-                        <button type="submit">Create Account</button>
+                        <button type="submit">Log In</button>
                     </div>
                 </form>
                 {state.loggedIn && (
-                    <Redirect to={'/developer'} />
+                    <Redirect to={'/'} />
                 )}
             </div>
         </div>
