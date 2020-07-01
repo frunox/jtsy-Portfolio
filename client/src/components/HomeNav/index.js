@@ -1,10 +1,20 @@
 import React, { useContext } from 'react';
 import DevDataContext from "../../contexts/DevDataContext";
+import SetupContext from "../../contexts/SetupContext";
 import { Menu } from 'semantic-ui-react';
 import "./style.css";
 
+let loggedIn = false;
+
 const HomeNav = () => {
   const { devData } = useContext(DevDataContext);
+  console.log('some devData: ', devData.fname)
+  const { setup, setSetup } = useContext(SetupContext);
+  console.log('in HomeNav loggedIn: ', setup.loggedIn)
+  if (localStorage.getItem("jtsy-login") === "true") {
+    loggedIn = true
+  }
+  console.log('in HomeNav loggedIn: ', setup.loggedIn)
   let content = (
     <div>
       <Menu inverted stackable fixed="top" className="menu">
@@ -20,11 +30,13 @@ const HomeNav = () => {
           <Menu.Item as="a" href="/contact" name="contact">
           </Menu.Item>
 
-          {/* <Menu.Item href="/login" name="login">
-          </Menu.Item> */}
-
-          <Menu.Item as="a" href="/developer" name="developer">
-          </Menu.Item>
+          {loggedIn ? (
+            <Menu.Item as="a" href="/developer" name="developer">
+            </Menu.Item>
+          ) : (
+              <Menu.Item href="/login" name="login">
+              </Menu.Item>
+            )}
         </Menu.Menu>
       </Menu>
 

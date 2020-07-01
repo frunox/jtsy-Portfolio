@@ -15,6 +15,6 @@ const DevDataContext = React.createContext({
     filteredRepos: [],
 });
 
-console.log('in DevDataContext ', DevDataContext)
+console.log('in DevDataContext ', DevDataContext._currentValue)
 
 export default DevDataContext;

@@ -4,6 +4,7 @@ import { Jumbotron } from "../components/JumboTron";
 import PortCards from "../components/PortCards/portCards";
 import SearchBar from "../components/SearchBar/searchBar";
 import DevDataContext from "../contexts/DevDataContext";
+import SetupContext from "../contexts/SetupContext";
 import { Row } from "react-bootstrap";
 // import { Container } from "semantic-ui-react";
 // import SetupContext from "../contexts/SetupContext";
@@ -12,6 +13,7 @@ import "./home.css";
 
 function Home() {
   const { devData } = useContext(DevDataContext);
+  const { setupData } = useContext(SetupContext);
   // const { setup, setSetup } = useContext(SetupContext);
   const [displayRepos, setdisplayRepos] = useState({
     displayRepos: devData.repositories,
@@ -35,7 +37,7 @@ function Home() {
   return (
     <div className='home'>
       <HomeNav />
-      <Jumbotron></Jumbotron>
+      <Jumbotron />
       <div className="lower">
         <Row className="searchRow">
           <SearchBar

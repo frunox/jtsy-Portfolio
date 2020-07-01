@@ -3,42 +3,42 @@ import { Redirect } from 'react-router'
 
 console.log('in LoginForm')
 
-// fakeAuth is a prop from page App.js thru Login.js
+// handleInputChange is a prop from page Signin.js
 const LoginForm = (props) => {
-    const [redirectToReferrer, setRedirectToReferrer] = useState({
-        redirectToReferrer: false,
+    // const { devData } = useContext(DevDataContext);
+    // const { setup } = useContext(SetupContext);
+    const [state, setState] = useState({
+        githubID: "",
+        password: "",
+        loggedIn: false
     });
 
-    const login = () => {
-        props.fakeAuth.authenticate(() => {
-            setRedirectToReferrer({ redirectToReferrer: true })
-        })
-    }
-    let password;
-
-    console.log('in LoginForm')
+    console.log('in LoginForm, LSlogin: ', localStorage.getItem("jtsy-login"))
     // handleInputChange is a prop from page Signin.js
     const handleSubmit = (e) => {
         e.preventDefault();
         // console.log("HMMMM leaving CreateAccountcomp");
         // props.handleInputChange();
-        console.log('Login handleSubmit', password, localStorage.getItem('password'));
-        console.log(redirectToReferrer.redirectToReferrer)
+        console.log('Login handleSubmit', state.password, state.loggedIn);
 
-        if (password === localStorage.getItem('password')) {
-            login()
+        if (state.password === localStorage.getItem('jtsy-password')) {
+            localStorage.setItem("jtsy-login", "true");
+            setState({
+                ...state,
+                loggedIn: true
+            })
         } else {
             alert('Re-enter password')
         }
-        console.log(redirectToReferrer.redirectToReferrer)
+
     };
 
     const handleChange = (e) => {
         e.preventDefault();
         const { name, value } = e.target;
 
-        password = value;
-        console.log(name, value, password)
+        setState({ ...state, [name]: value });
+        console.log(name, value)
     };
 
     // console.log("Try", this.state.loaded);
@@ -51,6 +51,18 @@ const LoginForm = (props) => {
                 <h1>Log In</h1>
                 <h4>* - Denotes Required Field</h4>
                 <form onSubmit={handleSubmit}>
+                    {/* Git hub */}
+                    <div className="githubID">
+                        <label htmlFor="githubID">Github ID*</label>
+                        <input
+                            placeholder="Github ID"
+                            type="text"
+                            name="githubID"
+                            required
+                            onChange={handleChange}
+                        />
+                    </div>
+                    {/* Git hub */}
                     <div className="password">
                         <label htmlFor="password">Password*</label>
                         <input
@@ -63,11 +75,11 @@ const LoginForm = (props) => {
                         />
                     </div>
                     <div className="createAccount">
-                        <button type="submit">Create Account</button>
+                        <button type="submit">Log In</button>
                     </div>
                 </form>
-                {redirectToReferrer.redirectToReferrer && (
-                    <Redirect to={'/developer'} />
+                {state.loggedIn && (
+                    <Redirect to={'/'} />
                 )}
             </div>
         </div>
