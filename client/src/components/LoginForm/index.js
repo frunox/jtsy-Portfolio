@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Redirect } from 'react-router'
+import { Redirect } from 'react-router';
+import md5 from 'blueimp-md5';
 
 console.log('in LoginForm')
 
@@ -20,8 +21,8 @@ const LoginForm = (props) => {
         // console.log("HMMMM leaving CreateAccountcomp");
         // props.handleInputChange();
         console.log('Login handleSubmit', state.password, state.loggedIn);
-
-        if (state.password === localStorage.getItem('jtsy-password')) {
+        let hash = md5(state.password);
+        if (hash === localStorage.getItem('jtsy-password')) {
             localStorage.setItem("jtsy-login", "true");
             setState({
                 ...state,
