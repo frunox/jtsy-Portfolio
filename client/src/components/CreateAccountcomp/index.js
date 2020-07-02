@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import md5 from 'blueimp-md5';
 import API from "../../utils/API";
 import DevDataContext from "../../contexts/DevDataContext"
 // import { Redirect } from "react-router-dom";
@@ -31,8 +32,9 @@ const CreateAccountComp = (props) => {
     e.preventDefault();
     console.log("HMMMM leaving CreateAccountcomp");
     props.handleInputChange();
-    console.log('CreateAccountcomp call getsync()', state.githubID);
-    localStorage.setItem('jtsy-password', state.password);
+    let hash = md5(state.password);
+    console.log('CreateAccountcomp call getsync()', state.password, hash);
+    localStorage.setItem('jtsy-password', hash);
     localStorage.setItem('jtsy-signin', "true");
     localStorage.setItem('jtsy-login', "false");
     // {developerLoginName: "frunox"}, {$set: {lname: "Black", fname: "Bob"}}
