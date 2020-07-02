@@ -38,14 +38,14 @@ function Home() {
     <div className='home'>
       <HomeNav />
       <Jumbotron />
-      <div className="lower">
+      {/* <div className="lower">
         <Row className="searchRow">
           <SearchBar
             handleInputChange={handleInputChange}
             resetSearch={resetSearch}
           ></SearchBar>
         </Row>
-      </div>
+      </div> */}
       <PortCards className="cards" repositories={displayRepos.displayRepos}></PortCards>
     </div>
   );

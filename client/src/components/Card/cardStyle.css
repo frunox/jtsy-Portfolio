@@ -1,7 +1,14 @@
 .repoCard {
   /* width: 600px; */
-  height: 380px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  height: 360px;
 }
+
+/* .card {
+  flex: 0 1 95%;
+} */
 
 .ui.card > .content,
 .ui.cards > .card > .content {

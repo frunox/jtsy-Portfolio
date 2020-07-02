@@ -15,7 +15,7 @@ const ProjectCard = props => {
   }
   return (
     <Card.Group className="repoCard" fluid stackable centered>
-      <Card raised>
+      <Card className="card" raised>
         <Image src={props.repo.imageLink} wrapped ui={false} />
         <Card.Content>
           <Card.Header>{props.repo.repoName}</Card.Header>
