@@ -23,6 +23,15 @@ const LogoutForm = () => {
         })
     };
 
+    const removeUser = () => {
+        console.log('LogoutForm removeUser');
+
+        localStorage.clear();
+        setState({
+            loggedIn: false
+        })
+    };
+
     const developer = () => {
         console.log('Logout developer');
         setState({
@@ -39,6 +48,12 @@ const LogoutForm = () => {
                     onClick={logout}
                 >
                     <button type="submit">Confirm</button>
+                </div>
+                <div
+                    className="removeButton"
+                    onClick={removeUser}
+                >
+                    <button type="submit">Remove User</button>
                 </div>
                 <div
                     className="createAccount"
