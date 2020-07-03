@@ -32,23 +32,18 @@ function SignIn() {
     return (
       <div>
         <Home />
-      </div>);
-  }
-  if (setup.initialized) {
-    return (
-      <div>
-        <SigninComp handleInputChange={handleInputChange}></SigninComp>
-      </div>
-    );
+      </div>)
   } else {
-    return (
-      <div>
-        <CreateAccountComp
-          handleInputChange={handleInputChange}
-        ></CreateAccountComp>
-      </div>
-    );
+    console.log('Signin else')
   }
+
+  return (
+    <div>
+      <CreateAccountComp
+        handleInputChange={handleInputChange}
+      ></CreateAccountComp>
+    </div>
+  );
 }
 
 export default SignIn;

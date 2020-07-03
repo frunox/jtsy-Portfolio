@@ -39,10 +39,6 @@ const developerSchema = new Schema({
     type: String,
     required: false,
   },
-  portfolioLink: {
-    type: String,
-    required: false,
-  },
   active: {
     type: Boolean,
     required: false,

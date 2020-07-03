@@ -14,4 +14,8 @@ router.route("/activeDevData").get(devDataController.getActiveDevData);
 console.log('5b. to /revDeveloper')
 router.route("/revDeveloper").post(devDataController.revDeveloper);
 
+// route to delete developer and repositories documents
+console.log('5c. to /deleteDeveloper')
+router.route("/deleteDeveloper").delete(devDataController.deleteDeveloper);
+
 module.exports = router;

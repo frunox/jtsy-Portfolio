@@ -29,6 +29,12 @@ export default {
     return axios.post("/api/devData/revDeveloper/", revDevData);
   },
 
+  // New function to delete developer data and all repositories documents
+  deleteDeveloper: function () {
+    console.log('8c. API.js  call deleteDeveloper')
+    return axios.delete("/api/devData/deleteDeveloper/");
+  },
+
   // Saves the developer data.  You will need to send in the githubID in params and any fields you want to update in the developerData field (This is one to many)
 
   updateRepositories: function (id, repositoriesData) {

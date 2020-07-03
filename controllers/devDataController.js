@@ -74,7 +74,6 @@ module.exports = {
           email: req.body.email,
           linkedInLink: req.body.linkedInLink,
           resumeLink: req.body.resumeLink,
-          portfolioLink: req.body.portfolioLink
         },
       }
     ).then((err, dbDevRev) => {
@@ -83,8 +82,34 @@ module.exports = {
     }
     )
       .catch(err => console.log(err));
-  }
+  },
 
+  // delete all documents in developer and repositories collections
+  deleteDeveloper: function (req, res) {
+    console.log('6h. in deleteDeveloper')
+    db.Developer.deleteMany({})
+      .then(() => {
+        res.json(true);
+      })
+      .catch(err => {
+        res.json('deleteDeveloper error', err);
+      });
+    // deleteRepositories();
+    db.Repositories.deleteMany({})
+      .then(() => {
+        res.json(true);
+      })
+      .catch(err => console.log('deleteRepositories error', err));
+  },
+
+  // deleteRepositories: function (req, res) {
+  //   console.log('6i. in deleteRepositories')
+  //   db.Repositories.deleteMany({})
+  //     .then(() => {
+  //       res.json(true);
+  //     })
+  //     .catch(err => console.log('deleteRepositories error', err));
+  // }
 
 };
 

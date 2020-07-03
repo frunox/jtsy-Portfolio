@@ -51,7 +51,6 @@ const CreateAccountComp = (props) => {
       email: state.email,
       linkedInLink: state.linkedInLink,
       resumeLink: state.resumeLink,
-      portfolioLink: state.portfolioLink,
       active: true
     }
     console.log('in createAcctComp: call updateDeveloper')
@@ -144,7 +143,7 @@ const CreateAccountComp = (props) => {
           </div>
           {/* resume */}
           {/* portfolio */}
-          <div className="portfolioLink">
+          {/* <div className="portfolioLink">
             <label htmlFor="portfolioLink">Portfolio Link</label>
             <input
               placeholder="portfolio link"
@@ -152,7 +151,7 @@ const CreateAccountComp = (props) => {
               name="portfolioLink"
               onChange={handleChange}
             />
-          </div>
+          </div> */}
           {/* portfolio */}
           <div className="password">
             <label htmlFor="password">Password*</label>
