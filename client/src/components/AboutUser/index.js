@@ -28,7 +28,7 @@ function AboutUser() {
                             </p>
                             <p>See my:</p>
                             <p><a className="links" href={devData.resumeLink} rel="noopener noreferrer" target="_blank">Resume</a></p>
-                            <p><a className="links" href={devData.portfolioLink} rel="noopener noreferrer" target="_blank">Portfolio</a></p>
+                            {/* <p><a className="links" href={devData.portfolioLink} rel="noopener noreferrer" target="_blank">Portfolio</a></p> */}
                         </Grid.Column>
                         <Grid.Column width={8}>
                             <Image src='https://i.ibb.co/bW5z1PX/Vermilion-Sunset-1-crop.jpg' />
