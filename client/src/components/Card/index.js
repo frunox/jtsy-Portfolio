@@ -16,7 +16,12 @@ const ProjectCard = props => {
   return (
     <Card.Group className="repoCard" fluid stackable centered>
       <Card className="card" raised>
-        <Image src={props.repo.imageLink} wrapped ui={false} />
+        <Image src={props.repo.imageLink}
+          as='a'
+          wrapped
+          ui={false}
+          href={props.repo.deploymentLink}
+          target='_blank' />
         <Card.Content>
           <Card.Header>{props.repo.repoName}</Card.Header>
           <Card.Description>{props.repo.repoDesc}</Card.Description>
