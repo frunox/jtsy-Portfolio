@@ -36,21 +36,14 @@ function SignIn() {
   } else {
     console.log('Signin else')
   }
-  if (setup.initialized) {
-    return (
-      <div>
-        <SigninComp handleInputChange={handleInputChange}></SigninComp>
-      </div>
-    );
-  } else {
-    return (
-      <div>
-        <CreateAccountComp
-          handleInputChange={handleInputChange}
-        ></CreateAccountComp>
-      </div>
-    );
-  }
+
+  return (
+    <div>
+      <CreateAccountComp
+        handleInputChange={handleInputChange}
+      ></CreateAccountComp>
+    </div>
+  );
 }
 
 export default SignIn;
