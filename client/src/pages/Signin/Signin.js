@@ -32,7 +32,9 @@ function SignIn() {
     return (
       <div>
         <Home />
-      </div>);
+      </div>)
+  } else {
+    console.log('Signin else')
   }
   if (setup.initialized) {
     return (

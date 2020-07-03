@@ -19,7 +19,6 @@ const SettingsComp = () => {
         email: devData.email,
         linkedInLink: devData.linkedInLink,
         resumeLink: devData.resumeLink,
-        portfolioLink: devData.portfolioLink,
         redirect: false
     });
 
@@ -37,7 +36,6 @@ const SettingsComp = () => {
             email: state.email,
             linkedInLink: state.linkedInLink,
             resumeLink: state.resumeLink,
-            portfolioLink: state.portfolioLink,
         }
         console.log('in Settings: call updateDeveloper', revDevData.developerGithubID)
         API.revDeveloper(revDevData)
@@ -110,7 +108,7 @@ const SettingsComp = () => {
                     </div>
                     {/* resume */}
                     {/* portfolio */}
-                    <div className="portfolioLink">
+                    {/* <div className="portfolioLink">
                         <label htmlFor="portfolioLink">Portfolio Link</label>
                         <input
                             placeholder={state.portfolioLink}
@@ -118,7 +116,7 @@ const SettingsComp = () => {
                             name="portfolioLink"
                             onChange={handleChange}
                         />
-                    </div>
+                    </div> */}
                     {/* portfolio */}
                     <div className="createAccount">
                         <button type="submit">Change Settings</button>

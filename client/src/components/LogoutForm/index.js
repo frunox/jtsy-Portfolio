@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-import { Redirect } from 'react-router'
+import { Redirect } from "react-router-dom";
+// import { Redirect } from 'react-router'
+import Signin from "../../pages/Signin/Signin";
+import API from "../../utils/API";
 import './style.css';
 
 console.log('in LoginForm')
@@ -9,7 +12,8 @@ const LogoutForm = () => {
     // const { devData } = useContext(DevDataContext);
     // const { setup } = useContext(SetupContext);
     const [state, setState] = useState({
-        loggedIn: null
+        loggedIn: null,
+        clearUser: false
     });
 
     console.log('LogoutForm, LS/state=login: ', localStorage.getItem("jtsy-login"), state.loggedin)
@@ -19,22 +23,25 @@ const LogoutForm = () => {
 
         localStorage.setItem("jtsy-login", "false");
         setState({
+            ...state,
             loggedIn: false
         })
     };
 
     const removeUser = () => {
         console.log('LogoutForm removeUser');
-
+        API.deleteDeveloper();
         localStorage.clear();
         setState({
-            loggedIn: false
+            ...state,
+            clearUser: true
         })
     };
 
     const developer = () => {
         console.log('Logout developer');
         setState({
+            ...state,
             loggedIn: true
         })
     };
@@ -53,7 +60,7 @@ const LogoutForm = () => {
                     className="removeButton"
                     onClick={removeUser}
                 >
-                    <button type="submit">Remove User</button>
+                    <button type="submit">Remove All User Data</button>
                 </div>
                 <div
                     className="createAccount"
@@ -66,6 +73,9 @@ const LogoutForm = () => {
                 )}
                 {state.loggedIn && (
                     <Redirect to={'/developer'} />
+                )}
+                {state.clearUser && (
+                    <Redirect to={'/signin'} />
                 )}
             </div>
         </div>
