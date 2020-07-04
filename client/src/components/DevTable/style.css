@@ -39,12 +39,6 @@ body {
   line-height: 1.4rem;
 }
 
-input.urlBox {
-  width: 250rem;
-  padding: 0;
-  margin-bottom: 0;
-}
-
 .searchLine {
   margin-left: 5%;
   margin-bottom: 10%;
@@ -58,21 +52,16 @@ input.urlBox {
   height: auto;
 }
 
-/* .repoModal {
-  height: 330px;
-  margin: 0 auto;
-} */
+.checkbox {
+  margin-top: 5px;
+  color: black;
+}
 
 .inputLabel {
   font-size: 1.1rem;
   font-weight: bold;
   width: 80%;
   margin-right: 10px;
-}
-
-.checkbox {
-  margin-top: 5px;
-  color: black;
 }
 
 .ui.modal > .header {
@@ -106,6 +95,10 @@ div.inline.field {
   padding-top: 0.2em;
 }
 
+.ui.form .field {
+  margin: 0 0 1em 0.5em;
+}
+
 .ui.form .fields > .field {
   flex: 0 1 auto;
   /* padding-left: .5em; */
@@ -124,6 +117,7 @@ label.inputLabel {
   width: 100%;
   margin-top: 8px;
   margin-bottom: 10px;
+  margin-left: -0.45em;
   vertical-align: middle;
   font-size: 0.85em;
   color: black;

@@ -249,7 +249,7 @@ const DevTable = (props) => {
             <Modal.Header className="modalHeader">Update Repository:  <span>{state.repoName}</span></Modal.Header>
             <Modal.Content>
               <Segment>
-                <Form onSubmit={(event) => handleLinkUpdate(event)}>
+                <Form>
                   <Form.Field>
                     <label className="inputLabel">Current Display Status: {state.activeFlag}</label>
                     <Checkbox
