@@ -70,6 +70,11 @@ input.urlBox {
   margin-right: 10px;
 }
 
+.checkbox {
+  margin-top: 5px;
+  color: black;
+}
+
 .ui.modal > .header {
   padding: 0.5rem 1.5rem 0.5rem 2.5rem;
 }
@@ -116,12 +121,25 @@ label.inputLabel {
 .ui.form .inline.fields .field > input,
 .ui.form .inline.fields .field > select {
   display: inline-block;
-  width: 90%;
+  width: 100%;
   margin-top: 8px;
-  margin-bottom: 0;
+  margin-bottom: 10px;
   vertical-align: middle;
-  font-size: 1em;
-  border: 1px solid rgba(34, 36, 38, 0.4);
+  font-size: 0.85em;
+  color: black;
+  border: 1px solid rgba(34, 36, 38, 0.5);
+}
+
+input .urlBox {
+  margin-bottom: 10px;
+}
+
+.ui[class*="right floated"].button,
+.ui[class*="right floated"].buttons {
+  float: right;
+  margin-right: -0.6em;
+  margin-top: 8%;
+  margin-left: -1.4em;
 }
 
 .ui.teal.button,
