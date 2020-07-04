@@ -1,7 +1,7 @@
 // import axios from "axios";
 import _ from "lodash";
 import React, { useState, useEffect, Fragment } from "react";
-import { Table, Form, Button, Modal, Container, Segment } from "semantic-ui-react";
+import { Table, Form, Button, Modal, Container, Segment, Checkbox } from "semantic-ui-react";
 import API from "../../utils/API";
 import RepoSearchBox from "../RepoSearchBox";
 // import DevModal from "../DevModal"
@@ -78,39 +78,37 @@ const DevTable = (props) => {
     });
   };
 
-  const handleImageLinkChange = event => {
+  const handleLinkChange = event => {
     // Getting the value and name of the input which triggered the change
-    let value = event.target.value;
-    const name = event.target.name;
-    console.log(name, value)
+    const { name, value } = event.target;
+    console.log('handleLinkChange: ', name, value)
     // Updating the input's state
     setState({
       ...state,
-      imageLink: value,
+      [name]: value,
     });
   };
 
-  const handleDeploymentLinkUpdate = (event) => {
+  const handleLinkUpdate = (event) => {
     // Preventing the default behavior of the form submit (which is to refresh the page)
     event.preventDefault();
-    let value = state.deploymentLink
-    console.log('in handleDeploymentLinkUpdate ', state.deploymentLink)
     setState({
       ...state,
-      deploymentLink: value,
+      rowClick: -1,
     });
-    console.log(state.deploymentLink)
-    updateDB(state.id, { deploymentLink: state.deploymentLink })
+    filter = ""
+    console.log('in handleLinkUpdate ', state.deploymentLink, state.imageLink)
+    updateDB(state.id, { deploymentLink: state.deploymentLink, imageLink: state.imageLink })
   }
 
   const handleImageLinkUpdate = (event) => {
     // Preventing the default behavior of the form submit (which is to refresh the page)
     event.preventDefault();
-    let value = state.imageLink
-    console.log('in handleImageLinkUpdate ', value)
+    const { name, value } = event.target;
+    console.log('in handleImageLinkUpdate ', name, value)
     setState({
       ...state,
-      imageLink: value,
+      [name]: value,
     });
     console.log(state.imageLink)
     updateDB(state.id, { imageLink: state.imageLink })
@@ -251,42 +249,42 @@ const DevTable = (props) => {
             <Modal.Header className="modalHeader">Update Repository:  <span>{state.repoName}</span></Modal.Header>
             <Modal.Content>
               <Segment>
-                <Form >
-                  <Form.Group>
-                    <Form.Field inline>
-                      <label className="inputLabel">Current Display Status: {state.activeFlag}</label>
-                      <Button size="small" floated="right" type="submit" color="teal" name="updateFlag" onClick={() => updateFlag(state.rowClick)}>Change</Button>
-                    </Form.Field>
-
-                  </Form.Group>
+                <Form>
+                  <Form.Field>
+                    <label className="inputLabel">Current Display Status: {state.activeFlag}</label>
+                    <Checkbox
+                      className="inputLabel"
+                      label='Display'
+                      checked={state.activeFlag === 'true'}
+                      onChange={() => updateFlag(state.rowClick)}
+                    />
+                  </Form.Field>
                 </Form>
               </Segment>
               <Segment>
-                <Form onSubmit={(event) => handleDeploymentLinkUpdate(event)}>
+                <Form onSubmit={(event) => handleLinkUpdate(event)}>
                   <Form.Group>
                     <Form.Field inline>
-                      <label className="inputLabel">Current Deployment URL: {state.deploymentLink}</label>
-                      <input className="urlBox" name="deploymentLink" label='Deployment URL: ' placeholder="new link" value={state.value} onChange={(event) => handleDeployLinkChange(event)} />
+                      <div>Current Deployment URL:</div>
+                      <label className="inputLabel">{state.deploymentLink}</label>
+                      <input className="urlBox" name="deploymentLink" label='Deployment URL: ' placeholder="new link" value={state.value} onChange={(event) => handleLinkChange(event)} />
                     </Form.Field>
-                    <Button size="small" color="teal" floated="right" type='submit'>Change</Button>
                   </Form.Group>
-                </Form>
-              </Segment>
-              <Segment>
-                <Form onSubmit={(event) => handleImageLinkUpdate(event)}>
                   <Form.Group>
                     <Form.Field inline>
-                      <label className="inputLabel">Current Image Link: {state.imageLink}</label>
-                      <input className="urlBox" name="imageLink" label='Image URL: ' placeholder="new link" value={state.value} onChange={(event) => handleImageLinkChange(event)} />
+                      <div>Current Image Link:</div>
+                      <label className="inputLabel">{state.imageLink}</label>
+                      <input className="urlBox" name="imageLink" label='Image URL: ' placeholder="new link" value={state.value} onChange={(event) => handleLinkChange(event)} />
                     </Form.Field>
-                    <Button size="small" color="teal" floated="right" type='submit'>Change</Button>
                   </Form.Group>
-                </Form>
-              </Segment>
-              <Button color="teal" fluid active
-                onClick={e => handleClick()}>
-                Close
+                  <Button color="teal" fluid active
+                    type="submit"
+                  >
+                    Update
                 </Button>
+                </Form>
+              </Segment>
+
             </Modal.Content>
           </Modal>
         </Container>

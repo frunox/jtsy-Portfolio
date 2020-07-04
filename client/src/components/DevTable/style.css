@@ -39,12 +39,6 @@ body {
   line-height: 1.4rem;
 }
 
-input.urlBox {
-  width: 250rem;
-  padding: 0;
-  margin-bottom: 0;
-}
-
 .searchLine {
   margin-left: 5%;
   margin-bottom: 10%;
@@ -58,10 +52,10 @@ input.urlBox {
   height: auto;
 }
 
-/* .repoModal {
-  height: 330px;
-  margin: 0 auto;
-} */
+.checkbox {
+  margin-top: 5px;
+  color: black;
+}
 
 .inputLabel {
   font-size: 1.1rem;
@@ -101,6 +95,10 @@ div.inline.field {
   padding-top: 0.2em;
 }
 
+.ui.form .field {
+  margin: 0 0 1em 0.5em;
+}
+
 .ui.form .fields > .field {
   flex: 0 1 auto;
   /* padding-left: .5em; */
@@ -116,12 +114,26 @@ label.inputLabel {
 .ui.form .inline.fields .field > input,
 .ui.form .inline.fields .field > select {
   display: inline-block;
-  width: 90%;
+  width: 100%;
   margin-top: 8px;
-  margin-bottom: 0;
+  margin-bottom: 10px;
+  margin-left: -0.45em;
   vertical-align: middle;
-  font-size: 1em;
-  border: 1px solid rgba(34, 36, 38, 0.4);
+  font-size: 0.85em;
+  color: black;
+  border: 1px solid rgba(34, 36, 38, 0.5);
+}
+
+input .urlBox {
+  margin-bottom: 10px;
+}
+
+.ui[class*="right floated"].button,
+.ui[class*="right floated"].buttons {
+  float: right;
+  margin-right: -0.6em;
+  margin-top: 8%;
+  margin-left: -1.4em;
 }
 
 .ui.teal.button,
