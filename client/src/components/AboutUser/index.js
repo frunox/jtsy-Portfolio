@@ -3,7 +3,6 @@ import DevDataContext from "../../contexts/DevDataContext";
 import { Grid, Image, Container } from 'semantic-ui-react'
 import './style.css'
 
-
 function AboutUser() {
     const { devData } = useContext(DevDataContext);
     return (
