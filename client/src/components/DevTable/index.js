@@ -4,17 +4,12 @@ import React, { useState, useEffect, Fragment } from "react";
 import { Table, Form, Button, Modal, Container, Segment, Checkbox } from "semantic-ui-react";
 import API from "../../utils/API";
 import RepoSearchBox from "../RepoSearchBox";
-// import DevModal from "../DevModal"
 import './style.css'
-// import RepositoryContext from "../../contexts/DevDataContext";
 
 var tableData = []
-var filter = ""
 var filteredList = []
 
-const DevTable = (props) => {
-  // const { devData, setDevData } = useContext(DevDataContext)
-  // console.log('displayRepos: ', devData.repositories.length)
+const DevTable = () => {
   const [state, setState] = useState({
     id: null,
     column: null,
@@ -31,10 +26,8 @@ const DevTable = (props) => {
     searchID: null
   })
 
-  const [activeFlag, setActiveFlag] = useState({ activeFlag: '' })
-
   useEffect(() => {
-    console.log('DevTable 1.  in useEffect')
+    // console.log('DevTable 1.  in useEffect')
     API.getActiveDeveloper()
       .then(res => {
         console.log('DevTable 2. ', res)
@@ -49,7 +42,7 @@ const DevTable = (props) => {
 
   const handleSort = (clickedColumn) => () => {
     const { column, filteredRepos, direction } = state;
-    console.log('in handleSort', clickedColumn)
+    // console.log('in handleSort', clickedColumn)
     if (column !== clickedColumn) {
       setState({
         ...state,
@@ -66,22 +59,10 @@ const DevTable = (props) => {
     });
   };
 
-  const handleDeployLinkChange = event => {
-    // Getting the value and name of the input which triggered the change
-    let value = event.target.value;
-    const name = event.target.name;
-    console.log(name, value)
-    // Updating the input's state
-    setState({
-      ...state,
-      deploymentLink: value,
-    });
-  };
-
   const handleLinkChange = event => {
     // Getting the value and name of the input which triggered the change
     const { name, value } = event.target;
-    console.log('handleLinkChange: ', name, value)
+    // console.log('handleLinkChange: ', name, value)
     // Updating the input's state
     setState({
       ...state,
@@ -96,31 +77,8 @@ const DevTable = (props) => {
       ...state,
       rowClick: -1,
     });
-    filter = ""
-    console.log('in handleLinkUpdate ', state.deploymentLink, state.imageLink)
+    // console.log('in handleLinkUpdate ', state.deploymentLink, state.imageLink)
     updateDB(state.id, { deploymentLink: state.deploymentLink, imageLink: state.imageLink })
-  }
-
-  const handleImageLinkUpdate = (event) => {
-    // Preventing the default behavior of the form submit (which is to refresh the page)
-    event.preventDefault();
-    const { name, value } = event.target;
-    console.log('in handleImageLinkUpdate ', name, value)
-    setState({
-      ...state,
-      [name]: value,
-    });
-    console.log(state.imageLink)
-    updateDB(state.id, { imageLink: state.imageLink })
-  }
-
-  const handleClick = (e) => {
-    console.log('in handleClick')
-    setState({
-      ...state,
-      rowClick: -1,
-    });
-    filter = ""
   }
 
   const handleSearchChange = event => {
@@ -148,24 +106,24 @@ const DevTable = (props) => {
   };
 
   const updateFlag = (id) => {
-    console.log('change Flag clicked', id, tableData[id].activeFlag)
+    // console.log('change Flag clicked', id, tableData[id].activeFlag)
     if (tableData[id].activeFlag === 'false') {
       tableData[id].activeFlag = 'true';
     } else {
       tableData[id].activeFlag = 'false';
     }
-    console.log('in updateFlag ', tableData[id].activeFlag)
+    // console.log('in updateFlag ', tableData[id].activeFlag)
     setState({
       ...state,
       activeFlag: tableData[id].activeFlag,
     });
-    console.log(state.id, { activeFlag: state.activeFlag })
+    // console.log(state.id, { activeFlag: state.activeFlag })
     updateDB(state.id, { activeFlag: tableData[id].activeFlag })
 
   };
 
   const updateDB = (id, property) => {
-    console.log('in updateDB:  ', id, property)
+    // console.log('in updateDB:  ', id, property)
     API.updateRepositories(id, property)
       .then(res => {
         console.log('7. success', state.imageLink);
@@ -178,8 +136,14 @@ const DevTable = (props) => {
   const showDevRepo = (repo) => {
     // console.log('clicked', repo)
     let id = tableData.findIndex(e => e.repoID === repo)
-    console.log('id: ', id, 'deployLink: ', tableData[id].deploymentLink)
-    console.log(tableData[id]._id, 'imageLink: ', tableData[id].imageLink)
+    // console.log('id: ', id, 'deployLink: ', tableData[id].deploymentLink)
+    // console.log(tableData[id]._id, 'imageLink: ', tableData[id].imageLink)
+    if (state.deploymentLink !== "") {
+      tableData[id].deploymentLink = state.deploymentLink;
+    }
+    if (state.imageLink !== "") {
+      tableData[id].imageLink = state.imageLink;
+    }
     setState({
       ...state,
       id: tableData[id]._id,
