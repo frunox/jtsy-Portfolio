@@ -10,8 +10,8 @@ function PortCards(props) {
       <Grid.Row centered className="rows">
         {props.repositories.map((repo, index) => (
 
-          <Grid.Column computer={5} table={8} className="columns">
-            <ProjectCard fluid key={index} repo={repo} />
+          <Grid.Column key={index} computer={5} table={8} className="columns">
+            <ProjectCard fluid repo={repo} />
           </Grid.Column>
 
         ))}
