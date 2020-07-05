@@ -22,7 +22,6 @@ const CreateAccountComp = (props) => {
     resumeLink: null,
     portfolioLink: null,
     githubID: null,
-    password: null,
     loaded: null,
   });
 
@@ -38,10 +37,7 @@ const CreateAccountComp = (props) => {
     localStorage.setItem('jtsy-signin', "true");
     localStorage.setItem('jtsy-login', "false");
     // {developerLoginName: "frunox"}, {$set: {lname: "Black", fname: "Bob"}}
-    // let obj1 = { developerLoginName: state.githubID, fname: state.firstName, lname: state.lastName, email: state.email }
-    // console.log('to db: ', obj1)
     API.getsync(state.githubID);
-    // state.loaded = true;
     const developerData = {
       repositories: [],
       developerLoginName: state.githubID,
@@ -68,11 +64,6 @@ const CreateAccountComp = (props) => {
 
     setState({ ...state, [name]: value });
   };
-
-  // console.log("Try", this.state.loaded);
-  // if (this.state.loaded) {
-  //   return <Redirect to={"/Home"} />;
-  // }
   let content = (
     <div className="wrapper">
       <div className="form-wrapper">

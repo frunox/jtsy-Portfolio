@@ -30,7 +30,7 @@ const DevTable = () => {
     // console.log('DevTable 1.  in useEffect')
     API.getActiveDeveloper()
       .then(res => {
-        console.log('DevTable 2. ', res)
+        // console.log('DevTable 2. ')
         setState({
           ...state,
           data: res.data.repositories,

@@ -14,13 +14,13 @@ const LoginForm = (props) => {
         loggedIn: false
     });
 
-    console.log('in LoginForm, LSlogin: ', localStorage.getItem("jtsy-login"))
+    // console.log('in LoginForm, LSlogin: ', localStorage.getItem("jtsy-login"))
     // handleInputChange is a prop from page Signin.js
     const handleSubmit = (e) => {
         e.preventDefault();
         // console.log("HMMMM leaving CreateAccountcomp");
         // props.handleInputChange();
-        console.log('Login handleSubmit', state.password, state.loggedIn);
+        // console.log('Login handleSubmit', state.password, state.loggedIn);
         let hash = md5(state.password);
         if (hash === localStorage.getItem('jtsy-password')) {
             localStorage.setItem("jtsy-login", "true");
@@ -39,13 +39,9 @@ const LoginForm = (props) => {
         const { name, value } = e.target;
 
         setState({ ...state, [name]: value });
-        console.log(name, value)
+        // console.log(name, value)
     };
 
-    // console.log("Try", this.state.loaded);
-    // if (this.state.loaded) {
-    //   return <Redirect to={"/Home"} />;
-    // }
     let content = (
         <div className="wrapper">
             <div className="form-wrapper">

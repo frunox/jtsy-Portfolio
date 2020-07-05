@@ -14,7 +14,7 @@ const ProjectCard = props => {
     deploymentLink = "";
   }
   return (
-    <Card.Group className="repoCard" fluid stackable centered>
+    <Card.Group className="repoCard" stackable centered>
       <Card className="card" raised>
         <Image src={props.repo.imageLink}
           as='a'
@@ -42,22 +42,3 @@ const ProjectCard = props => {
 }
 
 export default ProjectCard;
-
-// export default Card
-
-// function Card({ icon, title, children }) {
-//   return (
-//     <div className="card mt-4">
-//       <div className="card-header">
-//         <h3>
-//           <strong>
-//             <i className={`fa fa-${icon}`} aria-hidden="true" /> {title}
-//           </strong>
-//         </h3>
-//       </div>
-//       <div className="card-body">{children}</div>
-//     </div>
-//   );
-// }
-
-// export default Card;

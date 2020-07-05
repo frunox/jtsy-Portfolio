@@ -2,7 +2,6 @@ import React, { useState, useContext } from "react";
 import { Redirect } from 'react-router'
 import API from "../../utils/API";
 import DevDataContext from "../../contexts/DevDataContext";
-import Developer from "../../pages/Developer";
 
 console.log('in Settings')
 

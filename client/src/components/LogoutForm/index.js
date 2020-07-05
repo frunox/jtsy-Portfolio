@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 // import { Redirect } from 'react-router'
-import Signin from "../../pages/Signin/Signin";
 import API from "../../utils/API";
 import './style.css';
 
-console.log('in LoginForm')
+// console.log('in LoginForm')
 
 // handleInputChange is a prop from page Signin.js
 const LogoutForm = () => {
@@ -19,8 +18,7 @@ const LogoutForm = () => {
     console.log('LogoutForm, LS/state=login: ', localStorage.getItem("jtsy-login"), state.loggedin)
     // handleInputChange is a prop from page Signin.js
     const logout = () => {
-        console.log('Logout logout');
-
+        // console.log('Logout logout');
         localStorage.setItem("jtsy-login", "false");
         setState({
             ...state,
@@ -29,7 +27,7 @@ const LogoutForm = () => {
     };
 
     const removeUser = () => {
-        console.log('LogoutForm removeUser');
+        // console.log('LogoutForm removeUser');
         API.deleteDeveloper();
         localStorage.clear();
         setState({
@@ -39,7 +37,7 @@ const LogoutForm = () => {
     };
 
     const developer = () => {
-        console.log('Logout developer');
+        // console.log('Logout developer');
         setState({
             ...state,
             loggedIn: true
