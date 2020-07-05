@@ -1,20 +1,15 @@
-import React, { useContext, useState } from "react";
-import SigninComp from "../../components/SignIncomp";
+import React, { useContext } from "react";
 import CreateAccountComp from "../../components/CreateAccountcomp";
 import SetupContext from "../../contexts/SetupContext";
 import Home from "../Home";
 import "./Signin.css";
 
 function SignIn() {
-  console.log('in /pages/Signin.js')
+  // console.log('in /pages/Signin.js')
   // const { devData, setDevData } = useContext(DevDataContext);
   const { setup, setSetup } = useContext(SetupContext);
-  console.log('loggedIn: ', setup.loggedIn)
-  // const { loggedIn } = useContext(SetupContext);
-  console.log('in Signin.js setup.initialized: ', setup.initialized)
-  // const [loggedIn, setLoggedIn] = useState({
-  //   loggedIn: false,
-  // });
+  // console.log('loggedIn: ', setup.loggedIn)
+  // console.log('in Signin.js setup.initialized: ', setup.initialized)
 
   console.log('Signin SetupContext ', SetupContext._currentValue.setup)
 
