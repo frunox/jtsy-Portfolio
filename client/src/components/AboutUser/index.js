@@ -8,14 +8,11 @@ function AboutUser() {
     const { devData } = useContext(DevDataContext);
     return (
         <Fragment>
-
             <Container className="grid">
-
                 <Grid>
-
                     <Grid.Row>
                         <Grid.Column width={8}>
-                            <h3>About John Cannon</h3>
+                            <h3>About {devData.fname} {devData.lname}</h3>
                             <p>
                                 A web developer with the following skills:
                             </p>
