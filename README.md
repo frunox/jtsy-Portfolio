@@ -41,11 +41,17 @@ This application is designed for deployment on heroku. You must have an account 
 
 The first time you type "`npm start`" you will be prompted to enter your GitHub username.
 
-#### Create Account or Sign In
+#### Create Account
 
 You are then prompted to create an account (or sign in if you have already created an account). An account is needed so that your GitHub username is retained in the Mongo database. The database retains your curated list of projects to publish to your portfolio.
 
 <img src="client/src/assets/jtsy-create-account.png" alt="Create Account Page">
+
+#### Log In
+
+The home, about and contact pages are now accessible. However, to customize the app, the user must log in with their Github user name and the password created during signup.
+
+<img src="client/src/assets/jtsy-login.png" alt="Log In Page">
 
 #### Developer Page
 
@@ -53,11 +59,17 @@ Once you have created an account or signed in, you will see a list of your GitHu
 
 <img src="client/src/assets/jtsy-developer.png" alt="Developer Page">
 
-#### Project Page
+#### Project Dialog
 
 When a project is selected by clicking on it's row in the table, a modal dialog appears that allows the user to change the display status, deployment link, or image link to be included on the home page.
 
 <img src="client/src/assets/jtsy-project-modal.png" alt="Project Dialog">
+
+#### Settings
+
+Using the settings icon on the developer's page, the user can update personal information shown in the app as needed.
+
+<img src="client/src/assets/jtsy-settings.png" alt="Settings Dialog">
 
 #### Home Page
 
@@ -67,7 +79,7 @@ The selected projects are now displayed on the home page. The user's name is dyn
 
 #### About Page
 
-This page is about the user. It can be customized as needed to individualize the presentation. The resume and portfolio links are dynamically provided from the account settings.
+This page is about the user. It can be customized as needed to individualize the presentation. The user's name and resume link are dynamically provided from the account settings.
 
 <img src="client/src/assets/jtsy-about.png" alt="About Page">
 
@@ -76,6 +88,14 @@ This page is about the user. It can be customized as needed to individualize the
 This page provides links to the user's GitHub and LinkedIn pages, and an email form. The links and email address are provided from the account settings.
 
 <img src="client/src/assets/jtsy-contact.png" alt="Contact Page">
+
+#### Log Out
+
+The user can log out from the developer's page, denying access to their information. The home, about and contact pages are visible to any viewer.
+
+The user can also delete all their personal information and clear the database, resetting the app and starting again at the Create Account screen.
+
+<img src="client/src/assets/jtsy-logout.png" alt="Log Out Dialog">
 
 ### Features
 
