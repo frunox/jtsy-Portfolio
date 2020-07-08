@@ -19,7 +19,7 @@ module.exports = {
 
   // Update the Developer
   updateDeveloper: function (req, res) {
-    console.log('in devController updateDeveloper ', req.body)
+    console.log('in devController updateDeveloper ')
     db.Developer.insertMany(req.body).then((err, dbDevUpdate) => {
       if (err) {
         console.log('error: ', err)

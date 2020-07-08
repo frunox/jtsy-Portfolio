@@ -47,7 +47,7 @@ const App = () => {
     API.getActiveDevData().then((activeDevData) => {
 
       if (activeDevData.data) {
-        console.log('7. in App.js from controller', activeDevData.data.repositories.length)
+        console.log('7. in App.js from controller', activeDevData.data.fname)
         setDevData(activeDevData.data);
         setSetup({
           isLoaded: true,

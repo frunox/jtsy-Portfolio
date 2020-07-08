@@ -97,7 +97,7 @@ module.exports = {
     // deleteRepositories();
     db.Repositories.deleteMany({})
       .then(() => {
-        res.json(true);
+        console.log('repos deleted');
       })
       .catch(err => console.log('deleteRepositories error', err));
   },
