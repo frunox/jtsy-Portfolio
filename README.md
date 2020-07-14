@@ -61,7 +61,7 @@ Once you have created an account or signed in, you will see a list of your GitHu
 
 #### Project Dialog
 
-When a project is selected by clicking on it's row in the table, a modal dialog appears that allows the user to change the display status, deployment link, or image link to be included on the home page.
+When a project is selected by clicking on it's row in the table, a modal dialog appears that allows the user to change the display status, deployment link, or image link to be included on the home page. Keywords can be added to enhance the search functionality.
 
 <img src="client/src/assets/jtsy-project-modal.png" alt="Project Dialog">
 
