@@ -38,6 +38,7 @@ export default {
   // Saves the developer data.  You will need to send in the githubID in params and any fields you want to update in the developerData field (This is one to many)
 
   updateRepositories: function (id, repositoriesData) {
+    console.log('8d. API.js  call repositories', repositoriesData)
     return axios.post("/api/repositories/" + id, repositoriesData);
   },
 

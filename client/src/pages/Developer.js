@@ -13,9 +13,10 @@ function Developer() {
       <DevNav />
       <Container>
         <DevHeader className="welcome" />
-        <DevContainer />
-        <DevTable />
       </Container>
+      <DevContainer />
+      <DevTable />
+
     </div>
   );
 }
