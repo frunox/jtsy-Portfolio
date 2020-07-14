@@ -147,6 +147,7 @@ async function updateRepo(repo, devID) {
     deploymentLink: repo.homepage,
     imageLink: "",
     html_url: repo.html_url,
+    keywords: "",
     repoID: repo.id,
   };
   // Check to see if there is a record in our database with the github repo id.

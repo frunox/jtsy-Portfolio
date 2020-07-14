@@ -5,6 +5,8 @@ body {
 .devTable {
   height: 280px;
   overflow-y: scroll; /* or auto */
+  width: 90%;
+  margin-left: 5%;
 }
 
 .formBox {

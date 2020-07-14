@@ -23,7 +23,8 @@ const DevTable = () => {
     repoName: "",
     filteredRepos: null,
     searched: -1,
-    searchID: null
+    searchID: null,
+    keywords: ""
   })
 
   useEffect(() => {
@@ -77,14 +78,14 @@ const DevTable = () => {
       ...state,
       rowClick: -1,
     });
-    // console.log('in handleLinkUpdate ', state.deploymentLink, state.imageLink)
-    updateDB(state.id, { deploymentLink: state.deploymentLink, imageLink: state.imageLink })
+    console.log('in handleLinkUpdate ', state.keywords)
+    updateDB(state.id, { deploymentLink: state.deploymentLink, imageLink: state.imageLink, keywords: state.keywords })
   }
 
   const handleSearchChange = event => {
     let filter = ""
     filter = event.target.value;
-    console.log('filter: ', filter);
+    // console.log('filter: ', filter);
     filteredList = state.data.filter(item => {
       // merge data together, then see if user input is anywhere inside
       let values = Object.values(item)
@@ -96,7 +97,7 @@ const DevTable = () => {
       ...state,
       filteredRepos: filteredList,
     })
-    console.log('filteredRepos: ', filteredList)
+    // console.log('filteredRepos: ', filteredList)
   }
 
   const resetRepoSearch = (e) => {
@@ -123,7 +124,7 @@ const DevTable = () => {
   };
 
   const updateDB = (id, property) => {
-    // console.log('in updateDB:  ', id, property)
+    console.log('in updateDB:  ', id, property)
     API.updateRepositories(id, property)
       .then(res => {
         console.log('7. success', state.imageLink);
@@ -151,7 +152,8 @@ const DevTable = () => {
       deploymentLink: tableData[id].deploymentLink,
       imageLink: tableData[id].imageLink,
       repoName: tableData[id].repoName,
-      activeFlag: tableData[id].activeFlag
+      activeFlag: tableData[id].activeFlag,
+      keywords: tableData[id].keywords
     });
   };
 
@@ -159,15 +161,17 @@ const DevTable = () => {
 
   let content = (
     <Fragment>
-      <span className="searchLine">
-        <RepoSearchBox handleSearchChange={handleSearchChange} resetRepoSearch={resetRepoSearch} />
-      </span>
+      <Container>
+        <span className="searchLine">
+          <RepoSearchBox handleSearchChange={handleSearchChange} resetRepoSearch={resetRepoSearch} />
+        </span>
+      </Container>
       <div className="devTable">
         <Table sortable celled fixed inverted singleLine>
           <Table.Header inverted>
             <Table.Row className="sticky">
               <Table.HeaderCell
-                width={4}
+                width={3}
                 sorted={column === "name" ? direction : null}
                 onClick={handleSort("name")}
               >
@@ -239,6 +243,13 @@ const DevTable = () => {
                       <div>Current Image Link:</div>
                       <label className="inputLabel">{state.imageLink}</label>
                       <input className="urlBox" name="imageLink" label='Image URL: ' placeholder="new link" value={state.value} onChange={(event) => handleLinkChange(event)} />
+                    </Form.Field>
+                  </Form.Group>
+                  <Form.Group>
+                    <Form.Field inline>
+                      <div>Add Keywords:</div>
+                      <label className="inputLabel">{state.keywords}</label>
+                      <input className="urlBox" name="keywords" label='Keywords: ' placeholder="keywords..." value={state.value} onChange={(event) => handleLinkChange(event)} />
                     </Form.Field>
                   </Form.Group>
                   <Button color="teal" fluid active

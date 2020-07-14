@@ -34,6 +34,10 @@ const repositoriesSchema = new Schema({
     type: String,
     required: true,
   },
+  keywords: {
+    type: String,
+    required: false,
+  },
   repoID: {
     type: Number,
     required: true,
